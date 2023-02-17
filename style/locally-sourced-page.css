@@ -1,0 +1,10 @@
+/* LOCALLY SOURCED SECTTION*/
+
+.locally {
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+    position: relative;
+    background-color: yellow;
+    height: 60vh;
+    width: 100%;
+}
