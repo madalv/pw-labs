@@ -4,7 +4,102 @@
     border-top: 4px solid #000;
     border-bottom: 4px solid #000;
     position: relative;
-    background-color: yellow;
-    height: 60vh;
+    background-color: #ff6329;
+    background-size: cover;
     width: 100%;
+    height: 80vh;
+    position: relative;
+}
+
+.locally .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.locally .text .container {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    height: 50vh;
+}
+
+.locally .text .container h4 {
+    font-size: 3.3vh;
+    font-family: 'Raleway';
+    font-weight: bold;
+}
+
+.locally .text .container h1 {
+    text-align: center;
+    font-size: 13vh;
+    font-family: 'Raleway';
+    font-weight: 400;
+    color: #eee0d1;
+}
+
+.locally .text .container p {
+    font-family: 'Raleway';
+    font-size: 1.86vh;
+    width: 60vh;
+    color: #eee0d1;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+.locally .text .container button {
+    width: 17.8vh;
+    height: 4.8vh;
+    border-radius: 2.4vh;
+    border: 0.4vh solid #000000;
+    background-color: #eee0d1;
+    font-size: 2vh;
+    font-family: 'Raleway';
+    font-weight: bold;
+    color: #e06331;
+}
+
+.locally .top-dots {
+    width: 16.6vh;
+    z-index: 1;
+    position: absolute;
+}
+
+.locally .top-dots img {
+    margin-top: 13vh;
+}
+
+.locally .bananas {
+    width: 22.6vh;
+    height: 21.46vh;
+    z-index: 1;
+    position: absolute;
+}
+
+.locally .bananas img {
+    margin-top: 44vh;
+    margin-left: 5vh;
+}
+
+.locally .pear {
+    width: 23.46vh;
+    height: 20.13vh;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+}
+
+.locally .pear img {
+    margin-top: 8vh;
+}
+
+.locally .bottom-dots img {
+    right: 0;
+    z-index: 2;
+    position: absolute;
+    bottom: 5vh;
 }

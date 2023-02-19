@@ -1,0 +1,71 @@
+.faq {
+    height: 87.3vh;
+    border-bottom: 4px solid #000;
+    background-image: url("/images/background_2.jpg");
+    background-size: 100% 87.2vh;
+}
+
+.faq .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.faq .content .faqs {
+    width: 78.4vh;
+    font-family: 'Raleway';
+    color: #eee0d1;
+    margin-right: 15vh;
+    margin-bottom: 5vh;
+}
+
+.faq .content .faqs h1 {
+    font-size: 13.33vh;
+    margin-bottom: 4vh;
+}
+
+.faq .content .faqs .question {
+    padding-bottom: 3vh;
+}
+
+.faq .content .faqs .question .text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.faq .content .faqs .question p {
+    font-size: 3.33vh;
+    padding-bottom: 0.7vh;
+}
+
+.faq .content .faqs hr {
+    border: 3px solid #f3e1d1;
+    ;
+}
+
+.faq .zigzag {
+    left: 0;
+    position: absolute;
+}
+
+.faq .content .card img {
+    width: 60vh;
+    padding-bottom: 5vh;
+}
+
+.faq .top-dots img {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    margin-top: 10vh;
+    height: 16.6vh;
+}
+
+.faq .bottom-dots img {
+    z-index: 1;
+    position: absolute;
+    right: -2vh;
+    margin-top: 50vh;
+    height: 16.6vh;
+}

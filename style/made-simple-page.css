@@ -1,0 +1,116 @@
+.made-simple {
+    height: 109vh;
+    width: 100%;
+    background-color: #f3e1d1;
+}
+
+.made-simple .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.made-simple .text-container {
+    padding-top: 10vh;
+    padding-bottom: 7vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.made-simple .text-container h1 {
+    font-family: 'Raleway';
+    font-size: 13.33vh;
+    text-align: center;
+    width: 85vh;
+    padding-bottom: 3vh;
+    color: #e06331;
+}
+
+.made-simple .text-container p {
+    font-family: 'Raleway';
+    font-size: 1.86vh;
+    text-align: center;
+    width: 75vh;
+}
+
+.made-simple .product-container {
+    padding-left: 10vh;
+    padding-right: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.made-simple .product-container .product {
+    margin-right: 7vh;
+}
+
+.made-simple .product-container .rect {
+    width: 48.4vh;
+    height: 48.26vh;
+    border-radius: 3.86vh;
+    border: 3px solid #000000;
+    background-color: #f3e1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.made-simple .product-container .rect .pear img {
+    height: 37.73vh;
+}
+
+.made-simple .product-container .rect .lemon img {
+    height: 28.13vh;
+}
+
+.made-simple .product-container .description {
+    font-family: 'Raleway';
+    padding-top: 2vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.made-simple .product-container .description h3 {
+    font-size: 3.33vh;
+    font-weight: bold;
+}
+
+.made-simple .product-container .description p {
+    font-size: 1.86vh;
+    color: #ff6329;
+}
+
+.made-simple .product-container .description button {
+    color: #f3e1d1;
+    font-family: 'Raleway';
+    font-weight: bold;
+    font-size: 2vh;
+    width: 18vh;
+    height: 4.8vh;
+    border-radius: 2.4vh;
+    border: 3px solid #000000;
+    background-color: #e06331;
+}
+
+.made-simple .arrows img {
+    margin-top: 5vh;
+    margin-right: 7vh;
+    width: 3.46vh;
+}
+
+.made-simple .top-dots {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+}
+
+.made-simple .bottom-dots img {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    margin-top: 90vh;
+    height: 18.8vh;
+}
