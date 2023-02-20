@@ -131,7 +131,7 @@
 
 .groceries .container .phone-screen img {
     padding-top: 5vh;
-    padding-left: 15vh;
+    padding-left: 8vh;
     height: 65vh;
 }
 
@@ -168,7 +168,7 @@
 .groceries .bottom-pear {
     z-index: 1;
     position: absolute;
-    margin-top: 49vh;
+    margin-top: 51vh;
     margin-left: 95vh;
 }
 
