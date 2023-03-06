@@ -1,6 +1,7 @@
 import socket
 import ssl
 from bs4 import BeautifulSoup
+from bs4.element import Comment
 import sys
 
 def split_url(url):
@@ -15,18 +16,28 @@ def init_socket_conn(host, port):
     ssl_sock.connect((host, port))
     return ssl_sock
 
+def tag_visible(element):
+    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+        return False
+    if isinstance(element, Comment):
+        return False
+    return True
+
+def text_from_html(body):
+    soup = BeautifulSoup(body, 'html.parser')
+    texts = soup.findAll(text=True)
+    visible_texts = filter(tag_visible, texts)  
+    return u"\n".join(t.strip() for t in visible_texts)
 
 def get_content(url):
-    print(url)
     host, path = split_url(url)
     socket = init_socket_conn(host, 443)
 
     request = f"GET {path} HTTP/1.1 \r\nHost: {host} \r\nConnection: keep-alive \r\n\r\n"
     socket.sendall(request.encode("ascii"))
-    headers, body = socket.recv(4096).decode(), socket.recv(4096).decode()
+    headers, body = socket.recv(4096).decode(), socket.recv(12288).decode()
 
-    soup = BeautifulSoup(body, "html.parser")
-    print(soup.get_text())
+    print(text_from_html(body))
 
 
 if __name__ == "__main__":
