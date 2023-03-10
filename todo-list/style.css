@@ -1,0 +1,48 @@
+/* add your CSS here */
+
+@import 'dist/pretty-checkbox.min.css';
+
+#task-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.task-input-container {
+    margin: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+.title {
+    margin: 1vh;
+}
+
+.task-input-container div {
+    max-width: 50%;
+}
+
+.card {
+    width: 12rem;
+    margin: 1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-text {
+    padding-top: 1vh;
+    padding-left: 1vh;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#image-file {
+    height: 0;
+}
