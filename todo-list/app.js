@@ -27,7 +27,6 @@ const renderTask = (val) => {
     label.innerHTML = val.title
     labelDiv.appendChild(label)
     taskTitleDiv.appendChild(labelDiv)
-
     task.appendChild(taskTitleDiv)
 
     const taskDesc = document.createElement("p")
@@ -35,6 +34,12 @@ const renderTask = (val) => {
     taskDesc.innerHTML = val.description
     task.appendChild(taskDesc)
 
+    const delBtn = document.createElement("button")
+    delBtn.className = "btn btn-outline-danger"
+    delBtn.type = "button"
+    delBtn.innerHTML = "Delete"
+    delBtn.id = "delete-button"
+    task.appendChild(delBtn)
 
     taskContainer.appendChild(task)
 }
@@ -74,15 +79,23 @@ const markAsDone = (task) => {
 
 taskContainer.addEventListener("click", e => {
     const isCheckbox = e.target.type == "checkbox"
-    const getTaskName = () => { return e.target.parentElement.childNodes[1].childNodes[0].innerHTML }
+    const isDeleteBtn = e.target.id == "delete-button"
+
     if (isCheckbox) {
-        const taskSelected = todos.find(t => t.title === getTaskName())
+        const name = e.target.parentElement.childNodes[1].childNodes[0].innerHTML
+        const taskSelected = todos.find(t => t.title === name)
         markAsDone(taskSelected)
+    }
+
+    if (isDeleteBtn) {
+        e.preventDefault()
+        const name = e.target.parentElement.childNodes[0].childNodes[1].childNodes[0].innerHTML
+        deleteTask(name)
     }
 })
 
 const getDate = () => {
-    date = new Date()
+    const date = new Date()
     const d = [
         date.getMonth() + 1,
         date.getDate(),
@@ -95,13 +108,17 @@ const getDate = () => {
 addButton.addEventListener("click", e => {
     if (taskInput.value !== "") {
         let timeDate = ""
+        let title = taskInput.value
 
         if (timeInput.value !== "") {
+
+            setNotification(dateInput.value, timeInput.value, title)
+
             timeDate = `Due: ${timeInput.value}`
             timeDate += dateInput.value ? ` ${dateInput.value}` : ` ${getDate()[2]}-${getDate()[1]}-${getDate()[0]}`
         }
 
-        const task = createTask(taskInput.value, timeDate ? timeDate : "")
+        const task = createTask(title, timeDate ? timeDate : "")
         addTask(task)
         renderTask(task)
     }
@@ -110,6 +127,18 @@ addButton.addEventListener("click", e => {
     timeInput.value = ""
     dateInput.value = ""
 })
+
+const setNotification = (dateInput, timeInput, title) => {
+    const now = new Date()
+    let data = dateInput.split("-")
+    let time = timeInput.split(":")
+
+    const then = new Date(data[0], data[1] - 1, data[2], time[0], time[1], 0, 0)
+
+    setTimeout(() => {
+        const n = new Notification(`${title} is due!`)
+    }, then - now)
+}
 
 const createTask = (titleVal, descriptionVal) => {
     return { title: titleVal, description: descriptionVal }
@@ -120,26 +149,15 @@ const addTask = (task) => {
     localStorage.setItem("todos", JSON.stringify(todos))
 }
 
-function notifyMe() {
-    if (!("Notification" in window)) {
-        // Check if the browser supports notifications
-        alert("This browser does not support desktop notification");
-    } else if (Notification.permission === "granted") {
-        // Check whether notification permissions have already been granted;
-        // if so, create a notification
-        const notification = new Notification("Hi there!");
-        // …
-    } else if (Notification.permission !== "denied") {
-        // We need to ask the user for permission
-        Notification.requestPermission().then((permission) => {
-            // If the user accepts, let's create a notification
-            if (permission === "granted") {
-                const notification = new Notification("Hi there!");
-                // …
-            }
-        });
+const deleteTask = (taskName) => {
+    if (todos.find(task => task.title === taskName)) {
+        _.remove(todos, task => task.title === taskName)
+        localStorage.setItem("todos", JSON.stringify(todos))
+        renderTasks(todos)
+    } else {
+        _.remove(done, task => task.title === taskName)
+        localStorage.setItem("done", JSON.stringify(done))
+        renderTasks(done)
     }
-
-    // At last, if the user has denied notifications, and you
-    // want to be respectful there is no need to bother them anymore.
 }
+
