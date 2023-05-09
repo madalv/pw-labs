@@ -23,6 +23,10 @@
           </div>
         </div>
 
+        <div v-if="errorsExist" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-200 dark:text-red-400" role="alert">
+          <span class="font-medium">Something went wrong!</span> {{ error }}
+        </div>
+
         <div>
           <button type="submit"
             class="flex w-full justify-center rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
@@ -39,10 +43,15 @@ import { userStore } from '@/stores/userStore'
 
 export default {
   name: 'SignInForm',
+  mounted() {
+    this.errorsExist = false
+    this.error = ""
+  },
   data() {
     return {
       userStore,
       errorsExist: false,
+      error: "",
       form: {
         "data": {
           "name": '',
@@ -57,7 +66,8 @@ export default {
       UserRequest.signIn(this.form).then(res => {
         userStore.signIn(res.data)
       }).catch(error => {
-        console.log(JSON.stringify(error.response.data))
+        this.errorsExist = true
+        this.error = error.response.data.message[0]
       })
 
     }
