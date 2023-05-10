@@ -2,7 +2,7 @@
   <router-link :to="/quiz/di">
     <div :key="id" class="pr-5">
       <div
-        class="h-40 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-emerald-900 dark:border-gray-700"
+        class="h-40 block max-w-sm p-6 rounded-lg shadow bg-emerald-900 border-gray-700 bg-opacity-75"
       >
         <div class="flex justify-between">
           <h4

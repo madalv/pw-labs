@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
   >
     <a href="#">
       <h5
@@ -10,12 +10,12 @@
       </h5>
     </a>
     <div
-      class="flex mb-3 font-normal text-gray-700 dark:text-gray-400"
+      class="flex flex-col mb-3 font-normal text-gray-700 dark:text-gray-400"
     >
       <button
         v-for="answer in answers"
         @click="checkAnswer(answer)"
-        class="bg-orange-400 hover:bg-orange-300 text-white font-bold py-2 px-4 border-b-4 border-orange-300 hover:border-orange-200 rounded"
+        class="text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-900 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-orange-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
       >
         {{ answer }}
       </button>
@@ -23,7 +23,7 @@
 
     <div
       v-if="error != ''"
-      class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-200 dark:text-red-400"
+      class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-orange-100"
       role="alert"
     >
       {{ error }}
