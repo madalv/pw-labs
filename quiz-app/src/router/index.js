@@ -1,11 +1,12 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import QuizList from '../views/QuizList.vue'
+import QuizDetails from '../views/QuizDetails.vue'
 
 const routes = [
   {
     path: '/',
     name: 'quizList',
-    component: QuizList
+    component: QuizList,
   },
   {
     path: '/signin',
@@ -13,13 +14,22 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/SignInView.vue')
-  }
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../views/SignInView.vue'
+      ),
+  },
+  {
+    path: '/quiz/:id',
+    name: 'quizDetails',
+    component: QuizDetails,
+    props: true,
+  },
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+  history: createWebHistory(),
+  routes,
 })
 
 export default router
